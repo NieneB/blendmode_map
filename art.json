@@ -1,0 +1,992 @@
+{
+    "version": 8,
+    "name": "blendmodemap",
+    "glyphs": "https://ta.webmapper.nl/wm/glyphs/{fontstack}/{range}.pbf",
+    "sprite": "https://ta.webmapper.nl/wm/sprites/nimh_sprite_v2",
+    "sources": {
+        "wm_visdata": {
+            "type": "vector",
+            "url": "https://ta.webmapper.nl/wm/styles/tile.json"
+        }
+    },
+    "layers": [
+        {
+            "id": "water_case",
+            "source": "wm_visdata",
+            "source-layer": "water",
+            "type": "line",
+            "paint": {
+                "line-color": "#672d08",
+                "line-width": 2.5
+            }
+        },
+        {
+            "id": "water",
+            "source": "wm_visdata",
+            "source-layer": "water",
+            "type": "fill",
+            "paint": {
+                "fill-color": "#fff",
+                "fill-opacity": 0.97
+            }
+        },
+        {
+            "id": "nature_line",
+            "source": "wm_visdata",
+            "source-layer": "natural",
+            "type": "line",
+            "paint": {
+                "line-color": "#ffffff",
+                "line-width": 1
+            }
+        },
+        {
+            "id": "local-small-case",
+            "source": "wm_visdata",
+            "source-layer": "roads",
+            "type": "line",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "name"
+                    ],
+                    ""
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "type"
+                    ],
+                    "local"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.2
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    0,
+                    13.5,
+                    0.6,
+                    14,
+                    1.5,
+                    20,
+                    12
+                ],
+                "line-color": "#672d08",
+                "line-opacity": [
+                    "case",
+                    [
+                        "get",
+                        "tunnel"
+                    ],
+                    0.8,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "road-case-local-sec",
+            "source": "wm_visdata",
+            "source-layer": "roads",
+            "type": "line",
+            "filter": [
+                "match",
+                [
+                    "get",
+                    "type"
+                ],
+                [
+                    "local",
+                    "secondary"
+                ],
+                true,
+                false
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.2
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "local",
+                        0,
+                        "secondary",
+                        0.6,
+                        0
+                    ],
+                    13,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "local",
+                        0.6,
+                        "secondary",
+                        1.5,
+                        0
+                    ],
+                    13.5,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "local",
+                        1.5,
+                        "secondary",
+                        2,
+                        0
+                    ],
+                    20,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "local",
+                        16,
+                        "secondary",
+                        18,
+                        0
+                    ]
+                ],
+                "line-color": "#420f00",
+                "line-opacity": [
+                    "case",
+                    [
+                        "get",
+                        "tunnel"
+                    ],
+                    0.8,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "road-case-main-motor",
+            "source": "wm_visdata",
+            "source-layer": "roads",
+            "type": "line",
+            "filter": [
+                "match",
+                [
+                    "get",
+                    "type"
+                ],
+                [
+                    "main",
+                    "motorway"
+                ],
+                true,
+                false
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.2
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    8,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "motorway",
+                        0.6,
+                        "main",
+                        0,
+                        0
+                    ],
+                    9,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "motorway",
+                        1.5,
+                        "main",
+                        0,
+                        0
+                    ],
+                    10,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "local",
+                        0,
+                        "secondary",
+                        0,
+                        "motorway",
+                        2.6,
+                        "main",
+                        0.6,
+                        0
+                    ],
+                    11,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "motorway",
+                        2.6,
+                        "main",
+                        1.5,
+                        0
+                    ],
+                    20,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "motorway",
+                        22,
+                        "main",
+                        20,
+                        0
+                    ]
+                ],
+                "line-color": [
+                    "match",
+                    [
+                        "get",
+                        "type"
+                    ],
+                    "motorway",
+                    "#420f00",
+                    "main",
+                    "#672d08",
+                    "#420f00"
+                ],
+                "line-opacity": [
+                    "case",
+                    [
+                        "get",
+                        "tunnel"
+                    ],
+                    0.8,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "highway-case",
+            "source": "wm_visdata",
+            "source-layer": "roads",
+            "type": "line",
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "type"
+                ],
+                "highway"
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.25
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    4,
+                    0,
+                    5,
+                    0.6,
+                    6,
+                    1.5,
+                    20,
+                    26
+                ],
+                "line-color": "#420f00"
+            }
+        },
+        {
+            "id": "local-small-fill",
+            "source": "wm_visdata",
+            "source-layer": "roads",
+            "type": "line",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    [
+                        "get",
+                        "name"
+                    ],
+                    ""
+                ],
+                [
+                    "==",
+                    [
+                        "get",
+                        "type"
+                    ],
+                    "local"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "#ffffff",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.2
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13.5,
+                    0,
+                    14,
+                    0.5,
+                    20,
+                    8
+                ],
+                "line-opacity": [
+                    "case",
+                    [
+                        "get",
+                        "tunnel"
+                    ],
+                    0.9,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "road-fill-local-sec",
+            "source": "wm_visdata",
+            "source-layer": "roads",
+            "type": "line",
+            "filter": [
+                "match",
+                [
+                    "get",
+                    "type"
+                ],
+                [
+                    "local",
+                    "secondary"
+                ],
+                true,
+                false
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.2
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "local",
+                        0,
+                        "secondary",
+                        0,
+                        0
+                    ],
+                    13,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "local",
+                        0,
+                        "secondary",
+                        0.5,
+                        0
+                    ],
+                    13.5,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "local",
+                        0.5,
+                        "secondary",
+                        1,
+                        0
+                    ],
+                    20,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "local",
+                        12,
+                        "secondary",
+                        14,
+                        0
+                    ]
+                ],
+                "line-color": "#ffffff",
+                "line-opacity": [
+                    "case",
+                    [
+                        "get",
+                        "tunnel"
+                    ],
+                    0.9,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "road-fill-main-motor",
+            "source": "wm_visdata",
+            "source-layer": "roads",
+            "type": "line",
+            "filter": [
+                "match",
+                [
+                    "get",
+                    "type"
+                ],
+                [
+                    "main",
+                    "motorway"
+                ],
+                true,
+                false
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.2
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    8,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "motorway",
+                        0,
+                        "main",
+                        0,
+                        0
+                    ],
+                    9,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "motorway",
+                        0.5,
+                        "main",
+                        0,
+                        0
+                    ],
+                    10,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "local",
+                        0,
+                        "secondary",
+                        0,
+                        "motorway",
+                        1.3,
+                        "main",
+                        0.6,
+                        0
+                    ],
+                    11,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "motorway",
+                        1.3,
+                        "main",
+                        0.5,
+                        0
+                    ],
+                    20,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "motorway",
+                        18,
+                        "main",
+                        16,
+                        0
+                    ]
+                ],
+                "line-color": [
+                    "match",
+                    [
+                        "get",
+                        "type"
+                    ],
+                    "motorway",
+                    "#ffffff",
+                    "main",
+                    "#ffffff",
+                    "#ffffff"
+                ],
+                "line-opacity": [
+                    "case",
+                    [
+                        "get",
+                        "tunnel"
+                    ],
+                    0.8,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "highway-fill",
+            "source": "wm_visdata",
+            "source-layer": "roads",
+            "type": "line",
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "type"
+                ],
+                "highway"
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "#ffffff",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.25
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    5,
+                    0,
+                    6,
+                    0.5,
+                    20,
+                    22
+                ]
+            }
+        },
+        {
+            "id": "path-case",
+            "source": "wm_visdata",
+            "source-layer": "roads",
+            "type": "line",
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "type"
+                ],
+                "path"
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-width": 1,
+                "line-color": "#cecac2",
+                "line-dasharray": [
+                    3,
+                    5
+                ],
+                "line-opacity": [
+                    "case",
+                    [
+                        "get",
+                        "tunnel"
+                    ],
+                    0.7,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "rails_all",
+            "type": "line",
+            "source": "wm_visdata",
+            "source-layer": "railways",
+            "paint": {
+                "line-color": [
+                    "match",
+                    [
+                        "get",
+                        "type"
+                    ],
+                    "tram",
+                    "#cecac2",
+                    "metro",
+                    "#cecac2",
+                    "rail",
+                    "#cecac2",
+                    "#ffffff"
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    10,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "tram",
+                        0,
+                        "metro",
+                        0,
+                        "rail",
+                        0,
+                        0
+                    ],
+                    11,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "tram",
+                        0,
+                        "metro",
+                        0,
+                        "rail",
+                        0.5,
+                        0
+                    ],
+                    15.5,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "tram",
+                        0.5,
+                        "metro",
+                        0.5,
+                        "rail",
+                        0.8,
+                        0
+                    ],
+                    20,
+                    [
+                        "match",
+                        [
+                            "get",
+                            "type"
+                        ],
+                        "tram",
+                        2,
+                        "metro",
+                        2,
+                        "rail",
+                        2,
+                        0
+                    ]
+                ],
+                "line-opacity": [
+                    "case",
+                    [
+                        "get",
+                        "tunnel"
+                    ],
+                    0.5,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "railway-hatching",
+            "type": "line",
+            "source": "wm_visdata",
+            "source-layer": "railways",
+            "filter": [
+                "==",
+                [
+                    "get",
+                    "type"
+                ],
+                "rail"
+            ],
+            "paint": {
+                "line-color": "#420f00",
+                "line-dasharray": [
+                    0.2,
+                    4
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.1
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    14.5,
+                    0,
+                    15,
+                    3,
+                    20,
+                    8
+                ]
+            }
+        },
+        {
+            "id": "place-labels",
+            "type": "symbol",
+            "source": "wm_visdata",
+            "source-layer": "labels",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "type",
+                    "place"
+                ],
+                [
+                    "!=",
+                    "subtype",
+                    "urban_district"
+                ]
+            ],
+            "minzoom": 8,
+            "maxzoom": 16,
+            "layout": {
+                "icon-image": [
+                    "case",
+                    [
+                        "<=",
+                        [
+                            "get",
+                            "hierarchy"
+                        ],
+                        5
+                    ],
+                    "cirkel_plaats_groot",
+                    "cirkel_plaats_klein"
+                ],
+                "icon-allow-overlap": false,
+                "icon-anchor": "right",
+                "icon-padding": 50,
+                "text-allow-overlap": false,
+                "text-variable-anchor": [
+                    "bottom-left",
+                    "left",
+                    "top-left"
+                ],
+                "text-radial-offset": 0,
+                "text-padding": 3,
+                "text-size": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        0.8
+                    ],
+                    [
+                        "get",
+                        "hierarchy"
+                    ],
+                    1,
+                    28,
+                    10,
+                    12
+                ],
+                "text-font": [
+                    "case",
+                    [
+                        ">=",
+                        [
+                            "get",
+                            "hierarchy"
+                        ],
+                        6
+                    ],
+                    [
+                        "literal",
+                        [
+                            "Lato"
+                        ]
+                    ],
+                    [
+                        "<",
+                        [
+                            "get",
+                            "hierarchy"
+                        ],
+                        6
+                    ],
+                    [
+                        "literal",
+                        [
+                            "LatoSemi"
+                        ]
+                    ],
+                    [
+                        "literal",
+                        [
+                            "LatoSemi"
+                        ]
+                    ]
+                ],
+                "text-field": "{name}",
+                "text-rotation-alignment": "viewport",
+                "symbol-sort-key": [
+                    "get",
+                    "hierarchy"
+                ]
+            },
+            "paint": {
+                "text-halo-blur": 1,
+                "text-color": [
+                    "interpolate-hcl",
+                    [
+                        "linear"
+                    ],
+                    [
+                        "get",
+                        "hierarchy"
+                    ],
+                    0,
+                    "#420f00",
+                    15,
+                    "#672d08"
+                ],
+                "text-halo-width": 2.5,
+                "text-halo-color": "#fff"
+            }
+        }
+    ],
+    "visibility": "public",
+    "created": 0,
+    "modified": 0,
+    "owner": "webmapper",
+    "id": "blendmode",
+    "draft": false
+}

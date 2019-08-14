@@ -13,6 +13,8 @@ html, body {
   position: absolute;
   background-color: #000;
   background-image: url("../img/old-wooden-texture-background.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
   color: white; 
 }
 
@@ -28,6 +30,8 @@ html, body {
   overflow-x: hidden;
   position: absolute;
   background-image: url("../img/old-wooden-texture-background.jpg");
+    background-repeat: no-repeat;
+  background-size:cover;
   mix-blend-mode: overlay;
 }
 

@@ -281,3 +281,74 @@ geocoder.showSuggestResults = function (results) {
 
 // Add to doc
 document.body.appendChild(geocoder.createControl(recenterMap, map));
+
+var particleBox = document.getElementById('ripple');
+
+// Mouse effects
+function createParticle(x, y) {
+  var size = Math.random() * 100 + 40;
+
+  x -= (size / 2);
+  y -= (size / 2);
+
+  var particle = document.createElement('div');
+  particleBox.appendChild(particle);
+
+  TweenMax.set(particle, {
+    x: x,
+    y: y,
+    width: 0,
+    height: 0
+    
+  });
+
+  TweenMax.to(particle, 0.7, {
+    x: x ,
+    y: y ,
+    ease: Power2.easeOut,
+    width: size,
+    height: size,
+    background: function () {
+      return `hsl(${Math.random() * 35 + 0}, 100%, 50%)`
+    }
+  })
+
+  TweenMax.to(particle, Math.random() * 2 + 15, {
+    x: x + (Math.random() - 0.5) * 200,
+    y: y + (Math.random() - 0.5) * 200,
+    opacity: 0,
+    scale: 0,
+    ease: Power2.easeOut,
+    onComplete: function () {
+      particleBox.removeChild(particle);
+
+    }
+  })
+}
+
+// Lijst weg halen en terug
+var status = '';
+var press = d3.select('body');
+
+function mouseMoveEvent(e) {
+  var x = e.clientX;
+  var y = e.clientY;
+  createParticle(x, y);
+}
+function touchMoveEvent(e) {
+  var x = e.touches[0].clientX;
+  var y = e.touches[0].clientY;
+  e.preventDefault();
+  createParticle(x, y);
+}
+press.on("keypress", function () {
+  if (d3.event.key == 'l' && status == '') {
+    window.addEventListener('mousemove', mouseMoveEvent);
+    document.body.addEventListener('touchmove', touchMoveEvent);
+    status = 'press';
+  } else if (d3.event.key == 'l' && status == 'press') {
+    window.removeEventListener("mousemove", mouseMoveEvent); 
+    document.body.removeEventListener('touchmove', touchMoveEvent);
+    status = '';
+  }
+});

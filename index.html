@@ -7,6 +7,8 @@
     <title>BlendMode Map</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.1/TweenMax.min.js'></script>
+    <script src="https://d3js.org/d3-selection.v1.min.js"></script>
 
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
 </head>
@@ -16,8 +18,10 @@
     <p id="source">More: <a style="text-decoration: underline;" href="https://nieneb.nl">NieneB</a> <a
             style="text-decoration: underline;" href="https://webmapper.net"> Webmapper</a> </p>
     <a href="https://webmapper.net"><img id="loader" src="img/webmapper_logo-animated.svg"></a>
+
     <div id="background">
         <div id="map" class="fullmap"></div>
+        <div class="ripple" id="ripple"></div>
     </div>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
     <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
